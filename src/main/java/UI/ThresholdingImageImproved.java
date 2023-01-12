@@ -16,7 +16,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.opencv.core.Core;
+import nu.pattern.OpenCV;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.highgui.HighGui;
@@ -38,7 +38,7 @@ public class ThresholdingImageImproved extends javax.swing.JFrame {
 
     public ThresholdingImageImproved() {      
         nu.pattern.OpenCV.loadLocally();
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+        OpenCV.loadShared();
         initComponents();
     }
 
@@ -73,7 +73,7 @@ public class ThresholdingImageImproved extends javax.swing.JFrame {
         escritorio.setLayout(escritorioLayout);
         escritorioLayout.setHorizontalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1419, Short.MAX_VALUE)
+            .addGap(0, 1338, Short.MAX_VALUE)
         );
         escritorioLayout.setVerticalGroup(
             escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,21 +136,21 @@ public class ThresholdingImageImproved extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(554, 554, 554)
+                .addGap(514, 514, 514)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(25, 25, 25)
-                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addComponent(escritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -169,7 +169,7 @@ public class ThresholdingImageImproved extends javax.swing.JFrame {
                 try {
                     img = ImageIO.read(imagen);
                     if (img.getWidth() > 1024 || img.getHeight() > 768) {
-                        JOptionPane.showMessageDialog(rootPane, "Images should be 1024x768, update again a correct-resolution image. The image updated is: "+img.getWidth()+"x"+img.getHeight(), "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(rootPane, "Images should be 1024x768, update again a correct-resolution image. The  actual image updated is: "+img.getWidth()+"x"+img.getHeight(), "Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         VentanaInterna ventanaInterna = new VentanaInterna(img);
                         ventanaInterna.setTitle(imagen.getName());
